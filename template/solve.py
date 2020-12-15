@@ -8,12 +8,12 @@ with open(filepath) as fp:
         l.append(line.strip())
         line = fp.readline()
 
-nl = len(l)
+nls = len(l)
 
-c = 0
+ans = 0
 
-for i in range(nl):
+for i in range(nls):
     tl = l[i]
 
 
-print("answer: ", c)
+print("answer: ", ans)
