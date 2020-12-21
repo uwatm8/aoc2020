@@ -67,13 +67,15 @@ while not done and hadNumber:
 
     nums = 0
 
-    for s in sps:
+    fixed = {}
 
-        if s.isnumeric():
+    for s in sps:
+        if s.isnumeric() and s not in fixed:
+            fixed[s] = True
             nums += 1
             inner = l[int(s)]  # .replace('|', '_', 1)
             # if '|' in inner:
-            input = input.replace(str(s), ' ( '+inner+' ) ', 1)
+            input = input.replace(str(s), ' ( '+inner+' ) ')
             # print("split: ", inner.split('|'))
             # elif len(inner.replace('" "', '').replace('"', '')) == 1:
             #    input = input.replace(str(s), inner, 1)
@@ -152,6 +154,8 @@ while not done and hadNumber:
 
 
 # print(input)
+
+print("done with replace")
 
 
 if True:
