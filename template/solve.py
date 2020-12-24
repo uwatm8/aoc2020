@@ -25,7 +25,7 @@ for i in range(nls):
     tl = l[i]
 
 
-for i in range(nls):
+for i in range(nls2):
     tl = l2[i]
 
 
