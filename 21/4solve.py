@@ -26,8 +26,6 @@ couldBeIngred = {}
 allIngreds = []
 allAlergy = []
 
-doesNotContain = {}
-
 for i in range(nls):
     tl = l[i]
 
@@ -36,48 +34,35 @@ for i in range(nls):
     ingreds = tl.split(' (contains')[0].split(" ")
     alergies = tl.split('(contains')[1].strip(')').strip(' ').split(',')
 
-    print(" ")
-    print("i ", i)
-    print("ingreds", ingreds)
-    print("alergies", alergies)
-    print(" ")
-
-
     for i in ingreds:
         if i not in allIngreds:
             allIngreds.append(i)
 
         if i not in couldBeAlergy:
             couldBeAlergy[i] = []
-            doesNotContain[i] = []
 
-        for a in alergies:
-            if not a in couldBeAlergy[i]:
-                if a not in doesNotContain[i]:
-                    print("adding", a, "to", i)
-                    couldBeAlergy[i].append(a.replace(" ", ""))
-                else: 
-                    print("does not contain")
-    
+            for a in alergies:
+                if not a in couldBeAlergy[i]:
+                    couldBeAlergy[i].append(a)
+        
 
+            
         for cba in couldBeAlergy[i]:
             if cba not in alergies:
-                #doesNotContain[i].append(cba.replace(" ", ''))
-                print("removing", cba, "from", i)
-                print(i, "does not contain", doesNotContain[i])
-                #couldBeAlergy[i].remove(cba)
+                print("removing", cba)
+                couldBeAlergy[i].remove(cba)
                                     
 
-print(" ")
-#print(couldBeAlergy)
+    print("ingreds", ingreds)
+    print("alergies", alergies)
+
 
 print(" ")
-print(" ")
-print(" ")
+print(couldBeAlergy)
 
-for i in allIngreds:
-    items = len(couldBeAlergy[i])
-    print(i, couldBeAlergy[i], doesNotContain[i])
+for cba in couldBeAlergy:
+    items = len(couldBeAlergy[cba])
+    print(items)
     if items == 0:
       ans += 1
 
